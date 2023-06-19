@@ -1,9 +1,11 @@
-import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
-import { Groups } from "./src/screens/Groups";
 
-export default function App() {
-  return <Groups />;
+export function Groups() {
+  return (
+    <View style={styles.container}>
+      <Text>Groups</Text>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
