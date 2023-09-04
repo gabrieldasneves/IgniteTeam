@@ -7,6 +7,9 @@ import { Filter } from "@components/Filter";
 import { FlatList } from "react-native";
 import { useState } from "react";
 import { HeaderList, NumbersOfPlayers } from "@components/Filter/styles";
+import { PlayerCard } from "@components/PlayerCard";
+import { ListEmpty } from "@components/listEmpty";
+import { Button } from "@components/Button";
 
 export function Players() {
   const [team, setTeam] = useState("TEAMA");
@@ -39,6 +42,21 @@ export function Players() {
         />
         <NumbersOfPlayers>{players.length}</NumbersOfPlayers>
       </HeaderList>
+      <FlatList
+        data={players}
+        keyExtractor={(item) => item}
+        renderItem={({ item }) => (
+          <PlayerCard onRemove={() => {}} name={item} />
+        )}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={[
+          { paddingBottom: 100 },
+          players.length === 0 && { flex: 1 },
+        ]}
+        ListEmptyComponent={<ListEmpty message="No one is here" />}
+      />
+
+      <Button title="Remove team" type="SECONDARY" />
     </Container>
   );
 }
