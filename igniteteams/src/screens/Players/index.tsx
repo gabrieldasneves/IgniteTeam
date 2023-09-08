@@ -10,17 +10,22 @@ import { HeaderList, NumbersOfPlayers } from "@components/Filter/styles";
 import { PlayerCard } from "@components/PlayerCard";
 import { ListEmpty } from "@components/listEmpty";
 import { Button } from "@components/Button";
+import { useRoute } from "@react-navigation/native";
+
+type RouteParams = {
+  group: string;
+};
 
 export function Players() {
   const [team, setTeam] = useState("TEAMA");
   const [players, setPlayers] = useState([]);
+  const route = useRoute();
+  const { group } = route.params as RouteParams;
+
   return (
     <Container>
       <Header showBackButton />
-      <Highlight
-        title="Group name"
-        subtitle="Add your friends and create teams"
-      />
+      <Highlight title={group} subtitle="Add your friends and create teams" />
 
       <Form>
         <Input placeholder="Member" autoCorrect={false} />
